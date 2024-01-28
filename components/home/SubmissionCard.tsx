@@ -17,19 +17,15 @@ const SubmissionCard = () => {
   const [location, setLocation] = useState("");
   const [img, setImg] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  type Props = {
-    url: string;
-  };
-
-  const validateImg = (Props: url) => {
+  const validateImg = (url: string) => {
     const regex =
       /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%_\+.~#?&//=]+\.(?:png|jpg|jpeg|gif)$/;
     return regex.test(url);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     setSubmitting(true);
@@ -57,7 +53,7 @@ const SubmissionCard = () => {
       console.log(data);
       setSubmitting(false);
     } catch (error) {
-      setError(error.message);
+      setError((error as Error).message);
       setSubmitting(false);
     }
   };
