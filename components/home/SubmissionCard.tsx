@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 
-const submissionCard = () => {
+const SubmissionCard = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [img, setImg] = useState("");
@@ -113,4 +113,4 @@ const submissionCard = () => {
   );
 };
 
-export default submissionCard;
+export default SubmissionCard;

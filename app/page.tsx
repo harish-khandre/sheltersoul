@@ -1,4 +1,4 @@
-import SubmissionCard from "../components/home/submissionCard.tsx";
+import SubmissionCard from "../components/home/SubmissionCard.tsx";
 
 export default function Home() {
   return (
