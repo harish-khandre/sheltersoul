@@ -19,7 +19,11 @@ const SubmissionCard = () => {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
-  const validateImg = (url) => {
+  type Props = {
+    url: string;
+  };
+
+  const validateImg = (Props: url) => {
     const regex =
       /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%_\+.~#?&//=]+\.(?:png|jpg|jpeg|gif)$/;
     return regex.test(url);
