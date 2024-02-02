@@ -1,64 +1,37 @@
-"use client";
+import Link from "next/link";
 
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
-const items = [
-  {
-    url: "https://imgur.com/fvpgyd4.png",
-    name: "Adopt a Pet",
-    description:
-      "Adopt Happiness, Adopt Home: Embrace the journey of companionship. Adopt a pet, ignite an unbreakable bond, and fill your home with wagging tails and boundless love.",
-    page: "/findpet/findanimal",
-  },
-  {
-    url: "https://i.imgur.com/5TS3Gz6.png",
-    name: "Mate for  Pet",
-    description:
-      "Looking for a new playmate for your beloved fur baby? Our community is a hub for pet lovers like you, With whom you can connect and accompany them ",
-    page: "/findpet/findmate",
-  },
-];
-
-const CarouselD = () => {
+export default function Hero() {
   return (
-    <Carousel className="w-screen h-screen">
-      <CarouselContent>
-        {items.map((item) => (
-          <CarouselItem key={item}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex items-center justify-evenly m-4 p-4 ">
-                  <img
-                    src={item.url}
-                    alt={item.name}
-                    /* style={{
-                      height: "100%",
-                      width: "100%",
-                      objectFit: "cover",
-                    }}
-                    height={900}
-                    width={900}
-                    quality={100} */
-                    className=" h-36 w-36 object-cover rounded-2xl"
-                  />
-                  <h1>{item.description}</h1>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <section
+      className="w-full h-[600px] bg-cover bg-center "
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1518398046578-8cca57782e17?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+      }}
+    >
+      <div className="h-full bg-black bg-opacity-50 flex flex-col justify-center items-center px-4 md:px-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
+          Empowering the Forgotten
+        </h1>
+        <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white text-center max-w-2xl">
+          Join us in our mission to provide support and resources for mentally
+          disabled homeless individuals. Your involvement can change a life.
+        </p>
+        <div className="mt-6 flex flex-col md:flex-row gap-4">
+          <Link
+            className="inline-flex h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-black shadow transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+            href="#"
+          >
+            Learn More
+          </Link>
+          <Link
+            className="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700"
+            href="#"
+          >
+            Get Involved
+          </Link>
+        </div>
+      </div>
+    </section>
   );
-};
-
-export default CarouselD;
+}
