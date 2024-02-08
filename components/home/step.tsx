@@ -11,7 +11,7 @@ export const Step = () => {
           <span className="text-blue-600"> 1-2-3.</span>{" "}
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
-          Here's how our platform empowers you to be a catalyst for change:
+          Here$apos;s how our platform empowers you to be a catalyst for change:
         </p>
       </div>
       <div className="grid gap-8 row-gap-5 md:row-gap-8 lg:grid-cols-3">
