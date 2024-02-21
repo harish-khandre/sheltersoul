@@ -1,4 +1,4 @@
-import { EmailTemplate } from "../../../components/email-template";
+import { Email } from "../../../components/emails/email-template";
 import { Resend } from "resend";
 import * as React from "react";
 
@@ -10,9 +10,9 @@ export async function POST(req: Request) {
   try {
     const { data, error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
-      to: ["delivered@resend.dev", "arvitrust@gmail.com"],
+      to: ["delivered@resend.dev", "arvitrust@gmail.com", "smt@thebanyan.org"],
       subject: "Hello world",
-      react: EmailTemplate({ name, img, location }) as React.ReactElement,
+      react: Email({ name, img, location }) as React.ReactElement,
     });
     if (error) {
       console.log("error", error);
