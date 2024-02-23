@@ -15,14 +15,27 @@ import { useState } from "react";
 const SubmissionCard = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const validateImg = (url: string) => {
-    const regex =
-      /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%_\+.~#?&//=]+\.(?:png|jpg|jpeg|gif)$/;
-    return regex.test(url);
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const file = e.target.files[0];
+    setImg(file);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/s3-upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      console.log(data.status);
+    } catch (error) {
+      setError((error as Error).message);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -31,20 +44,14 @@ const SubmissionCard = () => {
     setSubmitting(true);
     setError(null);
 
-    const isValidImg = validateImg(img);
-
-    if (!name || !isValidImg) {
-      setError(
-        `Name is required. ${
-          !isValidImg ? " Please provide a valid image URL (optional)." : ""
-        }`,
-      );
+    if (!name) {
+      setError(`Name is required`);
       setSubmitting(false);
       return;
     }
 
     try {
-      const response = await fetch(`${process.env.URL}/api/save-name`, {
+      const response = await fetch(`/api/save-name`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, img, location }),
@@ -77,16 +84,13 @@ const SubmissionCard = () => {
               />
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="img">Image URL</Label>
+              <Label htmlFor="picture">Picture</Label>
               <Input
-                required
-                onChange={(e) => setImg(e.target.value)}
-                id="img"
-                placeholder="Image URL"
+                id="picture"
+                onChange={handleFileChange}
+                accept="image/*"
+                type="file"
               />
-              {img && !validateImg(img) && (
-                <p className="text-red-500">Invalid image URL format.</p>
-              )}
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="location">Location</Label>
@@ -106,7 +110,7 @@ const SubmissionCard = () => {
           Cancel
         </Button>
         <Button type="submit" disabled={submitting}>
-          {submitting ? "Sending Help..." : "Send Help"}
+          {submitting ? "Submiting.." : "Send Help"}
         </Button>
       </CardFooter>
     </Card>
