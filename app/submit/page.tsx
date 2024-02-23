@@ -1,4 +1,5 @@
 import SubmissionCard from "@/components/submission-card";
+import { Toaster } from "react-hot-toast";
 export default function Submit() {
   return (
     <>
@@ -12,6 +13,7 @@ export default function Submit() {
           <SubmissionCard />
         </div>
       </section>
+      <Toaster />
     </>
   );
 }

@@ -1,5 +1,8 @@
 "use client";
+
+import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -33,8 +36,10 @@ const SubmissionCard = () => {
       });
       const data = await response.json();
       console.log(data.status);
+      toast.success("Image uploaded successfully!");
     } catch (error) {
       setError((error as Error).message);
+      toast.error("Something went wrong!");
     }
   };
 
@@ -59,8 +64,11 @@ const SubmissionCard = () => {
       const data = await response.json();
       console.log(data);
       setSubmitting(false);
+      toast.success("Request sent successfully!");
+      useRouter().push("/");
     } catch (error) {
       setError((error as Error).message);
+      toast.error("Something went wrong!");
       setSubmitting(false);
     }
   };
