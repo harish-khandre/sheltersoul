@@ -19,38 +19,51 @@ const s3 = new S3Client({
   },
 });
 
-export async function uploadFileToS3(file: File, fileName: string) {
+export async function uploadFileToS3(
+  file: Buffer,
+  fileName: string,
+  size: number,
+) {
+  const fileBuffer = file;
+
+  if (fileBuffer.length > size) {
+    return NextResponse.json({ error: "File is too large" }, { status: 400 });
+  }
+
   const params = {
     Bucket: process.env.AWS_BUCKET_NAME,
-    Key: `${Date.now()}`,
-    Body: file,
+    Key: `${fileName}-${Date.now()}`,
+    Body: fileBuffer,
     ContentType: "image/jpeg",
   };
 
-  const command = new PutObjectCommand(params);
-  await s3.send(command);
-  const signedUrl = await getSignedUrl(s3, command, { expiresIn: 3600 });
-  return signedUrl.split("?")[0];
+  try {
+    const command = new PutObjectCommand(params);
+    await s3.send(command);
+    const signedUrl = await getSignedUrl(s3, command, { expiresIn: 3600 });
+    return signedUrl.split("?")[0];
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function POST(req: Request) {
   const formData = await req.formData();
-  console.log(formData);
   const name = formData.get("name") as string;
   const location = formData.get("location") as string;
   const file = formData.get("file") as File;
-  console.log(name, location, file);
+
   if (!file) {
     return NextResponse.json({ message: "File not found" }, { status: 400 });
   }
+  const buffer = Buffer.from(await file.arrayBuffer());
 
-  // const buffer = Buffer.from(await file.arrayBuffer());
+  const maxFileSize = 1024 * 1024 * 10;
 
-  const img = await uploadFileToS3(file, file.name);
+  const img = (await uploadFileToS3(buffer, file.name, maxFileSize)) as string;
   console.log(img);
 
-  return Response.json({ img });
-  /* try {
+  try {
     const { data, error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
       to: ["delivered@resend.dev", "arvitrust@gmail.com", "smt@thebanyan.org"],
@@ -61,9 +74,9 @@ export async function POST(req: Request) {
       console.log("error", error);
       return Response.json({ error });
     }
-    return Response.json({ data });
+    return NextResponse.json({ success: "ok" });
   } catch (error) {
     console.log("error", error);
     return Response.json({ error });
-  } */
+  }
 }

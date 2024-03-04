@@ -8,35 +8,42 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const SubmissionCard = () => {
-  const form = useForm();
   const router = useRouter();
+  const [file, setFile] = useState(null);
+  const [name, setName] = useState<any>(null);
+  const [location, setLocation] = useState<any>(null);
+  const [fileUrl, setFileUrl] = useState<any>(null);
+  const [uploading, setUploading] = useState(false);
+
+  const handleFileChange = (e: any) => {
+    const file = e.target.files?.[0];
+    setFile(file);
+
+    if (fileUrl) {
+      URL.revokeObjectURL(fileUrl);
+    }
+
+    if (file) {
+      const objectUrl = URL.createObjectURL(file);
+      setFileUrl(objectUrl);
+    } else {
+      setFileUrl(null);
+    }
+  };
 
   const onSubmit = async (e: any) => {
-    if (!e.file) return;
-    const file = e.file[0];
-    const name = e.name;
-    const location = e.location;
-
+    e.preventDefault();
+    if (!file) return;
+    setUploading(true);
     const formData = new FormData();
+    formData.append("file", file);
     formData.append("name", name);
     formData.append("location", location);
-    formData.append("file", file);
 
     if (!name) {
       toast.error("Please enter name ");
@@ -49,20 +56,26 @@ const SubmissionCard = () => {
     }
 
     try {
-      const response = await fetch(`/api/send`, {
+      const response = await fetch("/api/send", {
         method: "POST",
         body: formData,
       });
-      const data = await response.json();
-      console.log(data);
+
+      if (!response.ok) {
+        toast.error("Error sending request");
+        setUploading(false);
+        return;
+      }
+
+      setUploading(false);
       toast.success("Request sent successfully!");
       router.push("/");
     } catch (error) {
-      toast.error("Something went wrong!");
+      toast.error("Error sending request");
       console.log(error);
+      setUploading(false);
     }
   };
-  console.log(form.watch());
 
   return (
     <div>
@@ -73,59 +86,62 @@ const SubmissionCard = () => {
           <CardDescription>Send Help to the Individual</CardDescription>
         </CardHeader>
         <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Name" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      Name of the who needs help
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
+          <form onSubmit={onSubmit} className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              {" "}
+              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Photo of the person
+              </label>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                required={true}
+                accept="image/*"
+                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               />
-              <FormField
-                control={form.control}
-                name="location"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Location</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Location" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      Location of the Person who needs help
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
+            </div>
+
+            <div className="photo-container">
+              {fileUrl && file && (
+                <img src={fileUrl} className="w-60 m-4" alt="img" />
+              )}
+            </div>
+
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Name (optional)
+              </label>
+              <input
+                type="text"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               />
-              <FormField
-                control={form.control}
-                name="file"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Image</FormLabel>
-                    <FormControl>
-                      <Input type="file" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      Image of the Person who needs help
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Location
+              </label>
+              <input
+                type="text"
+                required={true}
+                onChange={(e) => {
+                  setLocation(e.target.value);
+                }}
+                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
               />
-              <Button type="submit">Submit</Button>
-            </form>
-          </Form>
+            </div>
+            <div className="flex gap-4">
+              <button
+                type="submit"
+                disabled={!file || uploading}
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2"
+              >
+                {uploading ? "Uploading..." : "Submit"}
+              </button>
+            </div>
+          </form>
         </CardContent>
         <CardFooter className="flex justify-between"></CardFooter>
       </Card>
