@@ -61,12 +61,23 @@ export async function POST(req: Request) {
   const maxFileSize = 1024 * 1024 * 10;
 
   const img = (await uploadFileToS3(buffer, file.name, maxFileSize)) as string;
-  console.log(img);
+
+  // if one state is choose then based on that state a array like be submitted to the to parameter of the email
+  // like if user selected maharashtra then the list of orgs email should get selected and that list should go to
+  // "to" param of the email
+  // create a seggregation between male and female ngo's for wider target of ngos
+  // based on the users input like state and gender the array of ngos should be submitted in "to" param of email
 
   try {
     const { data, error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
-      to: ["delivered@resend.dev", "arvitrust@gmail.com", "smt@thebanyan.org"],
+      to: [
+        "delivered@resend.dev",
+        "arvitrust@gmail.com",
+        "smt@thebanyan.org",
+        "info@neptunefoundation.com",
+        "societyashadeep@yahoo.com",
+      ],
       subject: "Hello world",
       react: Email({ name, location, img }) as React.ReactElement,
     });

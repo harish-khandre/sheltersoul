@@ -5,9 +5,9 @@ export default function Submit() {
     <>
       <section
         className="w-full h-[600px] bg-cover bg-center "
-        style={{
+        /* style={{
           backgroundImage: "url('https://imgur.com/7Zr7WyZ.png')",
-        }}
+        }} */
       >
         <div className=" flex justify-center items-center h-screen ">
           <SubmissionCard />
