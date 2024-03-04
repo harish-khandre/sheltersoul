@@ -1,85 +1,87 @@
 "use client";
 import React, { useState } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { GoPerson } from "react-icons/go";
+import { GiFootsteps } from "react-icons/gi";
 
-const Navbar = () => {
-  const [state, setState] = useState(false);
+const Navbar = ({ className }: { className?: string }) => {
+  const { scrollYProgress } = useScroll();
 
-  const navigation = [
+  const [visible, setVisible] = useState(false);
+
+  useMotionValueEvent(scrollYProgress, "change", (current) => {
+    // Check if current is not undefined and is a number
+    if (typeof current === "number") {
+      let direction = current! - scrollYProgress.getPrevious()!;
+
+      if (scrollYProgress.get() < 0.05) {
+        setVisible(false);
+      } else {
+        if (direction < 0) {
+          setVisible(true);
+        } else {
+          setVisible(false);
+        }
+      }
+    }
+  });
+
+  const navItems = [
     {
-      title: "About",
-      path: "#about",
+      name: "About",
+      link: "#about",
     },
     {
-      title: "Steps",
-      path: "#step",
-    },
-    {
-      title: "Submit",
-      path: "/submit",
+      name: "Steps",
+      link: "#step",
     },
   ];
 
   return (
-    <nav className="bg-white border-b w-full md:static md:text-sm md:border-none">
-      <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
-        <div className="flex items-center justify-between py-3 md:py-3 md:block">
-          <a href="javascript:void(0)">
-            <h1 className="text-blue-600 font-extrabold text-4xl">Selp</h1>
+    <AnimatePresence mode="wait">
+      <motion.div
+        initial={{
+          opacity: 1,
+          y: -100,
+        }}
+        animate={{
+          y: visible ? 0 : -100,
+          opacity: visible ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+        className={cn(
+          "flex max-w-fit  fixed top-10 inset-x-0 mx-auto border border-transparent dark:border-white/[0.2] rounded-full dark:bg-black bg-white shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center justify-center space-x-4",
+          className,
+        )}
+      >
+        {navItems.map((navItem: any, idx: number) => (
+          <a
+            key={`link=${idx}`}
+            href={navItem.link}
+            className={cn(
+              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500",
+            )}
+          >
+            <span className="hidden sm:block text-sm">{navItem.name}</span>
           </a>
-          <div className="md:hidden">
-            <button
-              className="text-gray-500 hover:text-gray-800"
-              onClick={() => setState(!state)}
-            >
-              {state ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-        <div
-          className={`flex-1 pb-3 mt-8 md:block md:pb-0 md:mt-0 ${state ? "block" : "hidden"}`}
-        >
-          <ul className="justify-end items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
-            {navigation.map((item, idx) => {
-              return (
-                <li key={idx} className="text-gray-700 hover:text-blue-600">
-                  <a href={item.path} className="block">
-                    {item.title}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </nav>
+        ))}
+        <Link href="/submit">
+          <button className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
+            <span>Submit</span>
+            <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent  h-px" />
+          </button>
+        </Link>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

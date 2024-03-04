@@ -1,8 +1,5 @@
 "use client";
 
-import toast from "react-hot-toast";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -11,118 +8,130 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const SubmissionCard = () => {
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [img, setImg] = useState<File | null>(null);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const form = useForm();
+  const router = useRouter();
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    const file = e.target.files[0];
-    setImg(file);
+  const onSubmit = async (e: any) => {
+    if (!e.file) return;
+    const file = e.file[0];
+    const name = e.name;
+    const location = e.location;
+
     const formData = new FormData();
+    formData.append("name", name);
+    formData.append("location", location);
     formData.append("file", file);
 
-    try {
-      const response = await fetch("/api/s3-upload", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-      console.log(data.status);
-      toast.success("Image uploaded successfully!");
-    } catch (error) {
-      setError((error as Error).message);
-      toast.error("Something went wrong!");
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    setSubmitting(true);
-    setError(null);
-
     if (!name) {
-      setError(`Name is required`);
-      setSubmitting(false);
+      toast.error("Please enter name ");
+      return;
+    }
+
+    if (!location) {
+      toast.error("Please enter Location");
       return;
     }
 
     try {
-      const response = await fetch(`/api/save-name`, {
+      const response = await fetch(`/api/send`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, img, location }),
+        body: formData,
       });
       const data = await response.json();
       console.log(data);
-      setSubmitting(false);
       toast.success("Request sent successfully!");
-      useRouter().push("/");
+      router.push("/");
     } catch (error) {
-      setError((error as Error).message);
       toast.error("Something went wrong!");
-      setSubmitting(false);
+      console.log(error);
     }
   };
+  console.log(form.watch());
 
   return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Your Request</CardTitle>
-        <CardDescription>Send Help to the Individual</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit}>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="name">Name of the person</Label>
-              <Input
-                required
-                onChange={(e) => setName(e.target.value)}
-                id="name"
-                placeholder="Name of the individual"
+    <div>
+      {" "}
+      <Card className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Your Request</CardTitle>
+          <CardDescription>Send Help to the Individual</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Name" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Name of the who needs help
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="picture">Picture</Label>
-              <Input
-                id="picture"
-                onChange={handleFileChange}
-                accept="image/*"
-                type="file"
+              <FormField
+                control={form.control}
+                name="location"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Location</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Location" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Location of the Person who needs help
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="location">Location</Label>
-              <Input
-                required
-                onChange={(e) => setLocation(e.target.value)}
-                id="location"
-                placeholder="Location of the individual"
+              <FormField
+                control={form.control}
+                name="file"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Image</FormLabel>
+                    <FormControl>
+                      <Input type="file" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Image of the Person who needs help
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-          </div>
-        </form>
-        {error && <p className="text-red-500">{error}</p>}
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button disabled={submitting} variant="outline">
-          Cancel
-        </Button>
-        <Button type="submit" disabled={submitting}>
-          {submitting ? "Submiting.." : "Send Help"}
-        </Button>
-      </CardFooter>
-    </Card>
+              <Button type="submit">Submit</Button>
+            </form>
+          </Form>
+        </CardContent>
+        <CardFooter className="flex justify-between"></CardFooter>
+      </Card>
+    </div>
   );
 };
 
 export default SubmissionCard;
+/* <BackgroundBeams /> */
