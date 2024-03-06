@@ -5,12 +5,12 @@ export const Step = () => {
       className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
     >
       <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-        <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-          At <span className="text-blue-600"> Selp</span>, making a difference
-          is as simple as <span className="text-blue-600"> 1-2-3.</span>{" "}
+        <h2 className="max-w-lg mb-6 font-sans text-5xl font-eb font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+          At <span className="text-blue-600">Selp</span>, making a difference is
+          as simple as <span className="text-blue-600"> 1-2-3.</span>{" "}
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
-          Here$apos;s how our platform empowers you to be a catalyst for change:
+          Here is how our platform empowers you to be a catalyst for change:
         </p>
       </div>
       <div className="grid gap-8 row-gap-5 md:row-gap-8 lg:grid-cols-3">
@@ -19,7 +19,10 @@ export const Step = () => {
             <p className="flex items-center justify-center w-10 h-10 mr-2 text-lg font-bold rounded-full text-blue-600  bg-deep-purple-accent-400">
               1
             </p>
-            <p className="text-lg font-bold leading-5 text-blue-600 "> Find </p>
+            <p className="text-lg font-bold leading-5 text-blue-600  font-eb ">
+              {" "}
+              Find{" "}
+            </p>
           </div>
           <p className="text-base ">
             Identify a mentally disabled homeless individual in your community
@@ -31,7 +34,9 @@ export const Step = () => {
             <p className="flex items-center justify-center w-10 h-10 mr-2 text-lg font-bold text-blue-600 rounded-full bg-deep-purple-accent-400">
               2
             </p>
-            <p className="text-lg font-bold leading-5 text-blue-600 ">Report</p>
+            <p className="text-lg font-bold leading-5 text-blue-600  font-eb ">
+              Submit
+            </p>
           </div>
           <p className="text-base ">
             Visit our user-friendly platform and submit essential details about
@@ -44,7 +49,7 @@ export const Step = () => {
             <p className="flex items-center justify-center w-10 h-10 mr-2 text-lg font-bold text-blue-600 rounded-full bg-deep-purple-accent-400">
               3
             </p>
-            <p className="text-lg font-bold leading-5 text-blue-600">
+            <p className="text-lg font-bold leading-5 text-blue-600 font-eb ">
               Help Arrives
             </p>
           </div>

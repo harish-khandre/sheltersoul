@@ -10,11 +10,14 @@ export default function Hero() {
       text: "the",
     },
     {
-      text: "Forgotten,",
+      text: "Forgotten",
     },
     {
-      text: "Selp",
-      className: "text-blue-600 dark:text-blue-500",
+      text: "with,",
+    },
+    {
+      text: "Selp!",
+      className: "text-blue-500",
     },
   ];
   return (
@@ -26,7 +29,7 @@ export default function Hero() {
       }}
     >
       <div className="h-full bg-black bg-opacity-50 flex flex-col justify-center items-center px-4 md:px-6">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
+        <h1 className="text-4xl font-eb md:text-5xl lg:text-6xl font-bold text-white text-center">
           <TypewriterEffectSmooth words={words} />
         </h1>
         <p className=" text-lg md:text-xl lg:text-2xl text-white text-center max-w-2xl">

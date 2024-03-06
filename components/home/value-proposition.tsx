@@ -18,7 +18,7 @@ export default function ValueProposition() {
                 />
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl py-5 ">
+                    <h2 className="text-3xl font-eb font-bold tracking-tighter sm:text-5xl py-5 ">
                       The problem we solve
                     </h2>
                     <p className="max-w-[600px] text-gray-950 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
@@ -54,7 +54,7 @@ export default function ValueProposition() {
                 />
                 <div className="flex flex-col justify-center space-y-4">
                   <div className="space-y-2">
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl py-5 ">
+                    <h2 className="text-3xl font-eb font-bold tracking-tighter sm:text-5xl py-5 ">
                       Our solution
                     </h2>
                     <p className="max-w-[600px] text-blue-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">

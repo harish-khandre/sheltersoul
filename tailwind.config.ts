@@ -10,6 +10,9 @@ const config = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      eb: ["EB Garamond", "serif"],
+    },
     container: {
       center: true,
       padding: "2rem",
