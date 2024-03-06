@@ -1,6 +1,23 @@
 import Link from "next/link";
+import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+import { img } from "../../public/matt-collamer-8UG90AYPDW4-unsplash.jpg";
 
 export default function Hero() {
+  const words = [
+    {
+      text: "Empowering",
+    },
+    {
+      text: "the",
+    },
+    {
+      text: "Forgotten,",
+    },
+    {
+      text: "Selp",
+      className: "text-blue-600 dark:text-blue-500",
+    },
+  ];
   return (
     <section
       className="w-full h-screen bg-cover bg-center "
@@ -11,9 +28,9 @@ export default function Hero() {
     >
       <div className="h-full bg-black bg-opacity-50 flex flex-col justify-center items-center px-4 md:px-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
-          Empowering the Forgotten
+          <TypewriterEffectSmooth words={words} />
         </h1>
-        <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white text-center max-w-2xl">
+        <p className=" text-lg md:text-xl lg:text-2xl text-white text-center max-w-2xl">
           Join us in our mission to provide support and resources for mentally
           disabled homeless individuals. Your involvement can change a life.
         </p>
