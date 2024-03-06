@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function AboutUs() {
   return (
     <section id="about" className="w-full py-12 md:py-24 lg:py-32">
@@ -17,7 +18,7 @@ export default function AboutUs() {
               </p>
             </div>
           </div>
-          <img
+          <Image
             alt="Team"
             className="mx-auto aspect-video overflow-hidden rounded-xl object-bottom sm:w-full lg:order-last lg:aspect-square"
             height="550"

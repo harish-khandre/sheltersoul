@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SlideInView from "../fade";
 
 export default function ValueProposition() {
@@ -8,7 +9,7 @@ export default function ValueProposition() {
           <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
             <div className="container px-4 md:px-6">
               <div className="grid items-center justify-center gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
-                <img
+                <Image
                   alt="Image"
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                   height="310"
@@ -44,7 +45,7 @@ export default function ValueProposition() {
           <section className="w-full py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
               <div className="grid items-center justify-center gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_550px]">
-                <img
+                <Image
                   alt="Image"
                   className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                   height="310"
@@ -58,16 +59,16 @@ export default function ValueProposition() {
                     </h2>
                     <p className="max-w-[600px] text-blue-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                       <span className="text-blue-900 ">
-                        Sheltered Soul stands as a beacon of hope, bridging the
-                        gap between the unseen and the compassionate.{" "}
+                        Selp stands as a beacon of hope, bridging the gap
+                        between the unseen and the compassionate.{" "}
                       </span>
                       We provide a platform where individuals can report
                       mentally disabled homeless people, initiating a powerful
                       ripple effect of change. By seamlessly connecting those in
                       need with NGOs dedicated to making a difference{" "}
                       <span className="text-blue-900">
-                        , Sheltered Soul empowers communities to rally behind a
-                        common cause.
+                        , Selp empowers communities to rally behind a common
+                        cause.
                       </span>
                     </p>
                   </div>

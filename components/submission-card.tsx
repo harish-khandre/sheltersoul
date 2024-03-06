@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import React from "react";
 import { BackgroundBeams } from "./ui/background-beams";
+import Image from "next/image";
 
 const SubmissionCard = () => {
   const router = useRouter();
@@ -71,7 +72,7 @@ const SubmissionCard = () => {
 
       setUploading(false);
       toast.success("Request sent successfully!");
-      router.push("/");
+      router.push("/appreciation");
     } catch (error) {
       toast.error("Error sending request");
       console.log(error);
@@ -130,7 +131,7 @@ const SubmissionCard = () => {
 
             <div className="photo-container space-y-1.5">
               {fileUrl && file && (
-                <img src={fileUrl} className="w-60 rounded-md" alt="img" />
+                <Image src={fileUrl} className="w-60 h-auto rounded-md" alt="img" />
               )}
             </div>
             <div className=" space-y-1.5">

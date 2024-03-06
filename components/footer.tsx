@@ -1,41 +1,13 @@
 "use client";
 const Footer = () => {
-  const footerNavs = [
-    {
-      href: "javascript:void()",
-      name: "About",
-    },
-    {
-      href: "javascript:void()",
-      name: "Blog",
-    },
-    {
-      href: "javascript:void()",
-      name: "",
-    },
-    {
-      href: "javascript:void()",
-      name: "Team",
-    },
-    {
-      href: "javascript:void()",
-      name: "Careers",
-    },
-
-    {
-      href: "javascript:void()",
-      name: "Suuport",
-    },
-  ];
-
   return (
     <footer className="text-gray-600 body-font">
       <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
         <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-          <span className="ml-3 text-xl">Sheltered Souls</span>
+          <span className="ml-3 text-xl">Selp</span>
         </a>
         <p className="text-sm text-blue-600 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2020 — Sheltered Souls
+          © 2024 — Selp
           <a
             href="https://twitter.com/knyttneve"
             className="text-gray-600 ml-1"

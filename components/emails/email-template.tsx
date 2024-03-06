@@ -19,10 +19,6 @@ interface EmailProps {
   img: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "";
-
 export const Email = ({ name, img, location }: EmailProps) => (
   <Html>
     <Head />
@@ -36,9 +32,9 @@ export const Email = ({ name, img, location }: EmailProps) => (
           Selp
         </Heading>
         <Text style={paragraph}>
-          I hope this email finds you well. I'm writing to you on behalf of
-          Sheltered Soul, a platform dedicated to connecting mentally disabled
-          homeless individuals with the assistance they need. We're immensely
+          I hope this email finds you well. we are writing to you on behalf of
+          our user, a platform dedicated to connecting mentally disabled
+          homeless individuals with the assistance they need. We are immensely
           grateful for your partnership in this endeavor and wanted to share a
           recent report submitted through our platform.
         </Text>
@@ -54,13 +50,12 @@ export const Email = ({ name, img, location }: EmailProps) => (
           width="370"
           height="500"
           alt="individual"
-          // style={logo}
         />{" "}
         <Text style={paragraph}>
           <Heading as="h2" style={heading}>
             Urgent Action Needed
           </Heading>
-          Based on the information provided, it's evident that urgent assistance
+          Based on the information provided, it is evident that urgent assistance
           is needed for the individual mentioned above. We kindly request your
           immediate attention to this matter to ensure that the individual
           receives the necessary support and care.
@@ -74,7 +69,7 @@ export const Email = ({ name, img, location }: EmailProps) => (
           <Heading as="h4">Thank You,</Heading>
           Once again, we want to express our sincere appreciation for your
           dedication to helping those in need. Your commitment to making a
-          difference is truly commendable, and we're honored to partner with you
+          difference is truly commendable, and we are honored to partner with you
           in this mission.
           <Heading as="h4">Warm regards,</Heading>
           <Heading as="h3" style={heading}>
@@ -86,12 +81,6 @@ export const Email = ({ name, img, location }: EmailProps) => (
     </Body>
   </Html>
 );
-
-Email.PreviewProps = {
-  name: "Alan",
-  location: "https://maps.app.goo.gl/nyeQLsL5sdAMcVqX9",
-  img: "https://images.unsplash.com/photo-1682687221175-fd40bbafe6ca?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
-} as EmailProps;
 
 export default Email;
 

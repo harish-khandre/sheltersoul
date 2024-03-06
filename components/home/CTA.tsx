@@ -21,7 +21,7 @@ const CTA = () => {
           <p className="text-blue-100 mt-3 font-medium text-base sm:text-lg ">
             Every report, every click, every act of compassion brings us one
             step closer to a world where no mentally disabled individual faces
-            homelessness alone. Join Sheltered Soul in making a lasting impact:
+            homelessness alone. Join Selp in making a lasting impact:
           </p>
         </div>
         <div className="mt-4">
