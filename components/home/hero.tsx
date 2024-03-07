@@ -16,7 +16,7 @@ export default function Hero() {
       text: "with,",
     },
     {
-      text: "Selp!",
+      text: "Shelter soul!",
       className: "text-blue-500",
     },
   ];

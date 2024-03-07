@@ -58,7 +58,7 @@ export default function ValueProposition() {
                       Our solution
                     </h2>
                     <p className="max-w-[600px] text-blue-950 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 ">
-                      Selp stands as a beacon of hope, bridging the gap between
+                      Shelter soul stands as a beacon of hope, bridging the gap between
                       the unseen and the compassionate.{" "}
                       <span className="text-blue-600 text-2xl font-semibold font-eb">
                         We provide a platform where individuals can send info of
@@ -66,7 +66,7 @@ export default function ValueProposition() {
                         ripple effect of change. By seamlessly connecting those
                         in need with NGOs{" "}
                       </span>{" "}
-                      dedicated to making a difference , Selp empowers
+                      dedicated to making a difference , Shelter soul empowers
                       communities to rally behind a common cause.
                     </p>
                   </div>

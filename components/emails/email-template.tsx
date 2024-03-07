@@ -23,13 +23,13 @@ export const Email = ({ name, img, location }: EmailProps) => (
   <Html>
     <Head />
     <Preview>
-      Selp, a platform dedicated to making a difference in the lives of mentally
+      Shelter soul, a platform dedicated to making a difference in the lives of mentally
       disabled homeless individuals.{" "}
     </Preview>
     <Body style={main}>
       <Container style={container}>
         <Heading as="h1" style={heading}>
-          Selp
+          Shelter soul
         </Heading>
         <Text style={paragraph}>
           I hope this email finds you well. we are writing to you on behalf of
@@ -73,7 +73,7 @@ export const Email = ({ name, img, location }: EmailProps) => (
           in this mission.
           <Heading as="h4">Warm regards,</Heading>
           <Heading as="h3" style={heading}>
-            Selp
+            Shelter soul
           </Heading>
         </Text>
         <Hr style={hr} />{" "}

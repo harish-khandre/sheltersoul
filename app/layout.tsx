@@ -5,7 +5,7 @@ import "./globals.css";
 const spline = Spline_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Selp",
+  title: "Shelter soul",
   description: "Help homeless mental disabled individuals ",
 };
 

@@ -6,7 +6,7 @@ export const Step = () => {
     >
       <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
         <h2 className="max-w-lg mb-6 font-sans text-5xl font-eb font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-          At <span className="text-blue-600">Selp</span>, making a difference is
+          At <span className="text-blue-600">Shelter soul</span>, making a difference is
           as simple as <span className="text-blue-600"> 1-2-3.</span>{" "}
         </h2>
         <p className="text-base text-gray-700 md:text-lg">
@@ -54,7 +54,7 @@ export const Step = () => {
             </p>
           </div>
           <p className="text-base ">
-            Once you submit a report, Selp takes swift action by connecting with
+            Once you submit a report, Shelter soul takes swift action by connecting with
             our partner NGOs.
           </p>
           <p className="absolute top-0 right-0 flex items-center justify-center w-8 h-8 -mt-4 -mr-4 font-bold rounded-full bg-deep-purple-accent-400 sm:-mt-5 sm:-mr-5 sm:w-10 sm:h-10">
