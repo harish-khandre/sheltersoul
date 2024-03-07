@@ -12,6 +12,7 @@ const config = {
   theme: {
     fontFamily: {
       eb: ["EB Garamond", "serif"],
+      spline: ["Spline", "serif"],
     },
     container: {
       center: true,

@@ -131,7 +131,11 @@ const SubmissionCard = () => {
 
             <div className="photo-container space-y-1.5">
               {fileUrl && file && (
-                <Image src={fileUrl} className="w-60 h-auto rounded-md" alt="img" />
+                <Image
+                  src={fileUrl}
+                  className="w-60 h-auto rounded-md"
+                  alt="img"
+                />
               )}
             </div>
             <div className=" space-y-1.5">

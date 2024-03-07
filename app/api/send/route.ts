@@ -73,17 +73,20 @@ export async function POST(req: Request) {
     const { data, error } = await resend.emails.send({
       from: "Acme <onboarding@resend.dev>",
       to: [
-        "delivered@resend.dev",
-        "arvitrust@gmail.com",
-        "smt@thebanyan.org", // hospital-based care, housing in rural and urban neighbourhoods and community and clinic-based mental health solutions.
-        "info@neptunefoundation.com", // Neptune adopts them and arranges for their treatment. Once they are cured and are able to regain their memory, traces their families and reunites them
-        "info@narayanseva.org", // Narayan Seva Sansthan is a non-profit organization helps in medical treatment, education, vocational training, and social rehabilitation of disabled and underprivileged people.
-        "headoffice@helpageindia.org", //Help Age takes care of their needs such as a pension, quality healthcare, action against elderly abuse, and many more, at a national, state, and societal level.
+        "1.harishkhandre@gmail.com",
+        "smt@thebanyan.org", // the banyan:  hospital-based care, housing in rural and urban neighbourhoods and community and clinic-based mental health solutions.
+        "info@neptunefoundation.com", // Neptune : adopts them and arranges for their treatment. Once they are cured and are able to regain their memory, traces their families and reunites them
+        "info@narayanseva.org", // Narayan Seva Sansthan : it is a non-profit organization helps in medical treatment, education, vocational training, and social rehabilitation of disabled and underprivileged people.
+        "headoffice@helpageindia.org", //Help Age : takes care of their needs such as a pension, quality healthcare, action against elderly abuse, and many more, at a national, state, and societal level.
         "amc.bangalore@gmail.com", // run a school for educating children with special needs within the age group of 4-16 years, a multi-category vocational training center for adolescents and adults, a day-care center, and many more.
-        "contact@apd-india.org", // this org enable, equip and empower children and adults with a range of disabilities, including locomotive difficulty, spinal cord injury, speech and hearing impairments, cerebral palsy, and to some extent, mental issues.
-        "info@samarthanam.org", // The organization works for the empowerment of persons with disabilities and the underserved through various initiatives focused on providing quality education, accommodation, nutritious food, vocational training, and placement-based rehabilitation
+        "contact@apd-india.org", //The Association of people with disability india : this org enable, equip and empower children and adults with a range of disabilities, including locomotive difficulty, spinal cord injury, speech and hearing impairments, cerebral palsy, and to some extent, mental issues.
+        "info@samarthanam.org", // smamarthanam:  The organization works for the empowerment of persons with disabilities and the underserved through various initiatives focused on providing quality education, accommodation, nutritious food, vocational training, and placement-based rehabilitation
         "societyashadeep@yahoo.com", // , it has helped individuals suffering from mental illness and intellectual disability by providing therapy. 650 homeless mentally-ill persons have been housed and treated in rehabilitation homes, and more than 1200 people have intervened upon issues related to mental health. Over 120 training and orientation programmes on mental health have been organized for school and college students, Anganwadi workers, etc.
+        "aaa@homelesspeople.in", // homelesspeople.in: shelter
+        "chinc.blr@gmail.com", // leonard cheshire disability : shelter
         "info@cadms.org",
+        "shraddha.karjat@gmail.com", // Shraddha Rehabilitation Foundation : shelter and medical
+        "anugrahaindia@gmail.com", // Anugraha : shelter and medical
         "admin@diyafoundation-india.org", //The mentally challenged are given hands-on training in skills that help them to get a job and become self-reliant
       ],
       subject: "Hello world",

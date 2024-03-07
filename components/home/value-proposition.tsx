@@ -21,15 +21,15 @@ export default function ValueProposition() {
                     <h2 className="text-3xl font-eb font-bold tracking-tighter sm:text-5xl py-5 ">
                       The problem we solve
                     </h2>
-                    <p className="max-w-[600px] text-gray-950 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                    <p className="max-w-[600px] text-blue-950 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
                       In the shadows of our cities, a silent crisis persists.{" "}
-                      <span className="text-blue-600">
+                      <span className="text-blue-600 text-2xl font-semibold font-eb">
                         Mentally disabled individuals find themselves grappling
                         with homelessness
                       </span>
                       , facing a myriad of challenges often unnoticed by
                       society. Amidst the bustling life, their{" "}
-                      <span className="text-blue-600">
+                      <span className="text-blue-600 text-2xl font-semibold font-eb">
                         {" "}
                         struggles are overlooked, leaving them vulnerable{" "}
                       </span>{" "}
@@ -57,19 +57,17 @@ export default function ValueProposition() {
                     <h2 className="text-3xl font-eb font-bold tracking-tighter sm:text-5xl py-5 ">
                       Our solution
                     </h2>
-                    <p className="max-w-[600px] text-blue-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                      <span className="text-blue-900 ">
-                        Selp stands as a beacon of hope, bridging the gap
-                        between the unseen and the compassionate.{" "}
-                      </span>
-                      We provide a platform where individuals can report
-                      mentally disabled homeless people, initiating a powerful
-                      ripple effect of change. By seamlessly connecting those in
-                      need with NGOs dedicated to making a difference{" "}
-                      <span className="text-blue-900">
-                        , Selp empowers communities to rally behind a common
-                        cause.
-                      </span>
+                    <p className="max-w-[600px] text-blue-950 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400 ">
+                      Selp stands as a beacon of hope, bridging the gap between
+                      the unseen and the compassionate.{" "}
+                      <span className="text-blue-600 text-2xl font-semibold font-eb">
+                        We provide a platform where individuals can send info of
+                        mentally disabled homeless people, initiating a powerful
+                        ripple effect of change. By seamlessly connecting those
+                        in need with NGOs{" "}
+                      </span>{" "}
+                      dedicated to making a difference , Selp empowers
+                      communities to rally behind a common cause.
                     </p>
                   </div>
                 </div>
