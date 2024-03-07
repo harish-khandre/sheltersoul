@@ -19,11 +19,7 @@ const s3 = new S3Client({
   },
 });
 
-export async function uploadFileToS3(
-  file: Buffer,
-  fileName: string,
-  size: number,
-) {
+async function uploadFileToS3(file: Buffer, fileName: string, size: number) {
   const fileBuffer = file;
 
   if (fileBuffer.length > size) {
