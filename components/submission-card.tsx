@@ -136,6 +136,8 @@ const SubmissionCard = () => {
               <div className="photo-container space-y-1.5">
                 {fileUrl && file && (
                   <Image
+                    width={240}
+                    height={60}
                     src={fileUrl}
                     className="w-60 h-auto rounded-md"
                     alt="img"
