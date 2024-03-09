@@ -23,8 +23,8 @@ export const Email = ({ name, img, location }: EmailProps) => (
   <Html>
     <Head />
     <Preview>
-      Shelter soul, a platform dedicated to making a difference in the lives of
-      mentally disabled homeless individuals.{" "}
+      Shelter Soul: Making a Difference in the Lives of Mentally Disabled
+      Homeless Individuals
     </Preview>
     <Body style={main}>
       <Container style={container}>
@@ -32,11 +32,10 @@ export const Email = ({ name, img, location }: EmailProps) => (
           Shelter soul
         </Heading>
         <Text style={paragraph}>
-          our user, a platform dedicated to connecting mentally disabled I hope
-          this email finds you well. we are writing to you on behalf of homeless
-          individuals with the assistance they need. We are immensely grateful
-          for your partnership in this endeavor and wanted to share a recent
-          report submitted through our platform.
+          We hope this email finds you well. On behalf of Shelter Soul, a
+          platform dedicated to connecting mentally disabled individuals with
+          NGOs, we express our heartfelt gratitude for your partnership. We wish
+          to share a recent report submitted through our platform.
         </Text>
         <Text style={paragraph}>
           <Heading as="h3">Report Details:</Heading>
@@ -50,10 +49,9 @@ export const Email = ({ name, img, location }: EmailProps) => (
           <Heading as="h2" style={heading}>
             Urgent Action Needed
           </Heading>
-          Based on the information provided, it is evident that urgent
-          assistance is needed for the individual mentioned above. We kindly
-          request your immediate attention to this matter to ensure that the
-          individual receives the necessary support and care.
+          Based on the provided information, urgent assistance is required for
+          the individual mentioned above. We kindly request your immediate
+          attention to ensure they receive necessary support and care.
         </Text>
         <Section style={btnContainer}>
           <Button style={button} href={location}>
@@ -62,10 +60,9 @@ export const Email = ({ name, img, location }: EmailProps) => (
         </Section>{" "}
         <Text style={paragraph}>
           <Heading as="h4">Thank You,</Heading>
-          Once again, we want to express our sincere appreciation for your
-          dedication to helping those in need. Your commitment to making a
-          difference is truly commendable, and we are honored to partner with
-          you in this mission.
+          We extend our sincere appreciation for your dedication to helping
+          those in need. Your commitment to making a difference is truly
+          commendable, and we are honored to partner with you in this mission.
           <Heading as="h4">Warm regards,</Heading>
           <Heading as="h3" style={heading}>
             Shelter soul
@@ -89,10 +86,6 @@ const container = {
   margin: "0 auto",
   padding: "20px 0 48px",
 };
-
-/* const logo = {
-  margin: "0 auto",
-}; */
 
 const paragraph = {
   fontSize: "16px",
@@ -122,8 +115,3 @@ const hr = {
   borderColor: "#cccccc",
   margin: "20px 0",
 };
-
-/* const footer = {
-  color: "#8898aa",
-  fontSize: "12px",
-}; */

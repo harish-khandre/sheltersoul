@@ -13,11 +13,12 @@ export default function Hero() {
       text: "Forgotten",
     },
     {
-      text: "with,",
+      text: "with",
     },
     {
       text: "Shelter soul!",
-      className: "text-blue-500",
+      className:
+        "text-blue-600 font-eb font-bold text-xl md:text-5xl lg:text-5xl",
     },
   ];
   return (
@@ -29,14 +30,17 @@ export default function Hero() {
       }}
     >
       <div className="h-full bg-black bg-opacity-50 flex flex-col justify-center items-center px-4 md:px-6">
-        <h1 className="text-4xl font-eb md:text-5xl lg:text-6xl font-bold text-white text-center">
-          <TypewriterEffectSmooth words={words} />
+        <h1 className="text-2xl md:text-4xl lg:text-xl  text-white text-center">
+          <TypewriterEffectSmooth
+            words={words}
+            className="text-lg md:text-xl lg:text-2xl"
+          />
         </h1>
         <p className=" text-lg md:text-xl lg:text-2xl text-white text-center max-w-2xl">
           Join us in our mission to provide support and resources for mentally
           disabled homeless individuals. Your involvement can change a life.
         </p>
-        <div className="mt-6 flex flex-col md:flex-row gap-4">
+        <div className="mt-6 flex flex-col-reverse md:flex-row gap-4">
           <Link
             className="inline-flex h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-black shadow transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
             href="#"

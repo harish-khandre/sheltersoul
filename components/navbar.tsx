@@ -8,8 +8,6 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { GoPerson } from "react-icons/go";
-import { GiFootsteps } from "react-icons/gi";
 
 const Navbar = ({ className }: { className?: string }) => {
   const { scrollYProgress } = useScroll();
@@ -71,7 +69,7 @@ const Navbar = ({ className }: { className?: string }) => {
               "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500",
             )}
           >
-            <span className="hidden sm:block text-sm">{navItem.name}</span>
+            <span className=" sm:block text-sm">{navItem.name}</span>
           </a>
         ))}
         <Link href="/submit">
