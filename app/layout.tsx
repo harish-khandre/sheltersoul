@@ -7,7 +7,14 @@ const spline = Spline_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Shelter soul",
   description: "Help homeless mental disabled individuals ",
-};
+  icons: {
+    icon: ["/favicon.ico?v=4"],
+    apple: ["/apple-touch-icon.png?v=4"],
+    shortcut: ["/apple-touch-icon.png?v=4"],
+  },
+  }
+;
+
 
 export default function RootLayout({
   children,
