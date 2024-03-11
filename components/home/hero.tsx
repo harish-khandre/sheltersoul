@@ -42,12 +42,6 @@ export default function Hero() {
         </p>
         <div className="mt-6 flex flex-col-reverse md:flex-row gap-4">
           <Link
-            className="inline-flex h-10 items-center justify-center rounded-md bg-white px-8 text-sm font-medium text-black shadow transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
-            href="#"
-          >
-            Learn More
-          </Link>
-          <Link
             className="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700"
             href="/submit"
           >
