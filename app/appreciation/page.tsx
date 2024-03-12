@@ -46,7 +46,7 @@ const thankyou = () => {
           {" "}
           <p className="m-4 text-blue-600 p-2">
             {" "}
-            You just send that individual's details to us as well as these
+            You just send that individual details to us as well as these
             national level NGOs:{" "}
           </p>{" "}
           <ol className="rounded-lg shadow-sm text-lg flex flex-col justify-end items-center list-decimal gap-4 font-bold font-eb text-blue-600 p-4">
